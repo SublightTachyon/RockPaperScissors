@@ -31,7 +31,7 @@ function playRound(playerSelction, computerSelection){
     } else if (playerSelction == 'Rock' && computerSelection == 'Paper'){
         return  paperBeatsRock + youLose
     } else if (playerSelction == 'Rock' && computerSelection == 'Scissors'){
-        return rockScissor + youWin
+        return rockBeatsScissor + youWin
     }  else if (playerSelction == 'Paper' && computerSelection == 'Rock'){
         return paperBeatsRock + youWin
     } else if (playerSelction == 'Paper' && computerSelection == 'Paper'){
@@ -50,4 +50,16 @@ function playRound(playerSelction, computerSelection){
 }
 const playerSelection = prompt('Rock, Paper, or Scissors','Rock') ;
 const computerSelection = computerPlay()
-console.log(playRound(playerSelection, computerSelection))
+//console.log(playRound(playerSelection, computerSelection))
+let playerScore = 0
+let computerScore = 0
+function game(){
+    return playRound(playerSelection, computerSelection)
+} if (playerSelection == 'Rock' && computerSelection == 'Scissors' || playerSelection == 'Scissors' && computerSelection == 'Paper'|| playerSelection == 'Paper' && computerSelection == 'Rock'){
+    playerScore += 1
+} else if (playerSelection == 'Rock' && computerSelection == 'Paper' || playerSelection == 'Scissors' && computerSelection == 'Rock' || playerSelection == 'Paper' && computerSelection == 'Scissors'){
+    computerScore += 1
+}
+console.log(game())
+/* write a function called game() the keeps track of the score an plays best out of five round of Rock, Paper, Scissors.
+call playround inside game. check status of playRound*/
