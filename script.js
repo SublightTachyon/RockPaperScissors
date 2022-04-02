@@ -1,71 +1,71 @@
-let playerScore = 0
-let computerScore = 0
-let rock = 'ROCK';
-let paper = 'PAPER';
-let scissors = 'SCISSORS';
+
+var tie = 0
 const crps = ['ROCK','PAPER','SCISSORS'];
 var draw = "It's a draw"
-    var paperBeatsRock = 'Paper wraps up Rock;'
-    var scissorsBeatsPaper = 'Scissors cut Paper;'
-    var rockBeatsScissors = 'Rock breaks Scissors;'
-    var youWin = ' You Win '
-    var youLose = ' You Lose'
+    var paperBeatsRock = 'Paper wraps up Rock';
+    var scissorsBeatsPaper = 'Scissors cut Paper';
+    var rockBeatsScissors = 'Rock breaks Scissors';
+    var youWin = ' You Win ';
+    var youLose = ' You Lose';
+    var UserScore = playerScore;
+    var cpuScore = computerScore;
+    var playerScore = 0
+    var computerScore = 0
 function computerPlay() {
     return crps[Math.floor(Math.random() * crps.length)]
 }
-var playerSelection = window.prompt('Rock, Paper, or Scissors','Rock').toUpperCase() ;
+var playerSelection = playerPick();
+function playerPick(){ 
+   let choice = window.prompt('Rock, Paper, or Scissors','Rock').toUpperCase() ;
+   while (choice !== 'ROCK' && choice !== 'PAPER' && choice !== 'SCISSORS'){
+      choice = prompt('You have to type Rock, Paper, or Scissors').toUpperCase() ;
+   }
+       return choice
+}
 const computerSelection = computerPlay()
-//console.log(computerPlay())
-function playRound(playerSelction, computerSelection){
-    /*var draw = "It's a draw"
-    var paperBeatsRock = 'Paper wraps up Rock;'
-    var scissorsBeatsPaper = 'Scissors cut Paper;'
-    var rockBeatsScissors = 'Rock breaks Scissors;'
-    var youWin = ' You Win '
-    var youLose = ' You Lose' */
-    if (playerSelction == 'ROCK' && computerSelection == 'ROCK'){
-      return draw
-        //tie++
-    } else if (playerSelction == 'ROCK' && computerSelection == 'PAPER'){
+function playRound(playerSelection, computerSelection){
+    if (playerSelection == 'ROCK' && computerSelection == 'ROCK'){
+        return draw
+        
+    } else if (playerSelection == 'ROCK' && computerSelection == 'PAPER'){
         return  paperBeatsRock + youLose
-        //computerScore++
-    } else if (playerSelction == 'ROCK' && computerSelection == 'SCISSORS'){
+    } else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS'){
         return rockBeatsScissors + youWin
-        //playerScore++
-    }  else if (playerSelction == 'PAPER' && computerSelection == 'ROCK'){
+    }  else if (playerSelection == 'PAPER' && computerSelection == 'ROCK'){
         return paperBeatsRock + youWin
-       // playerScore++
     } else if (playerSelction == 'PAPER' && computerSelection == 'PAPER'){
         return draw
-        //tie++
     } else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS'){
         return scissorsBeatsPaper + youLose
-        //computerScore++
     } else if (playerSelection == 'SCISSORS' && computerSelection =='ROCK' ){
         return rockBeatsScissors + youLose
-        //computerScore++
     } else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER'){
         return scissorsBeatsPaper + youWin
-        //computerScore++;
     } else if (playerSelection = 'SCISSORS' & computerSelection == 'SCISSORS') {
         return draw
-        //tie++
     } else {
         return 'ERROR CODER ONE'
-    }
+    } 
 }
-
-//console.log(playRound(playerSelection, computerSelection))
+function keepScore(playerSelection, computerSelection){
+    var playerScore = 0
+    var computerScore = 0
+    if (playerSelection == computerSelection){
+        return tie += 1 
+    }else if((playerSelection == 'ROCK' && computerSelection == 'SCISSORS') || (playerSelection == 'PAPER' && computerSelection =='ROCK') || (playerSelection == 'SCISSORS' && computerSelection == 'ROCK')){
+        return playerScore+=1
+    } else if ((playerSelection == 'ROCK' && computerSelection == 'PAPER') || (playerSelection == 'PAPER' && computerSelection =='SCISSORS') || (playerSelection == 'SCISSORS' && computerSelection == 'ROCK')){
+        return computerScore+=1
+    }console.log('CPU '+computerScore);console.log('User '+playerScore)
+} 
 function game(){
     for (let i = 0; i < 5; i++) {
-      if (youLose){
-         playerScore++
-     } if (youLose) {
-         computerScore++
-     } else {
-         tie++
-     } console.log(playRound(playerSelection, computerSelection))
-        console.log('round ' + i)
-}
+      console.log(playRound(playerSelection, computerSelection))
+        console.log('Player Score '+UserScore)
+        console.log('cpu Score '+cpuScore) 
+      console.log('ROUND ' + i)
+     } 
+        
+
 }
 console.group(game())
