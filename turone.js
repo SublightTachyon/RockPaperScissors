@@ -1,7 +1,8 @@
 //declare some variables that will be used in the code.
 const shoot = ['rock','paper','scissors']
-var Cselect = comPlay()
-var Pselect = humanPlay()
+const Cselect = comPlay()
+const Pselect = humanPlay()
+const winner = singleRound(Pselect,Cselect)
 var draw = 0
 var loss = 0
 var win = 0
@@ -46,7 +47,7 @@ function singleRound(Pselect,Cselect){
         return loss
     } else {console.log('ERROR FUNCTION SINGLE ROUND')}
 }
-console.log(singleRound(Pselect,Cselect))
+//console.log(singleRound(Pselect,Cselect))
 
 //Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
 
@@ -54,13 +55,26 @@ console.log(singleRound(Pselect,Cselect))
 
 //function humanPlay that take input from the player rock paper or scissors use prompt()
 
-//function humanPlay(){
-//
-//}
 
 //write a function called game() call playRound() inside of game() to play a five round game
 //and report a winner or loser at the end
 
-//game(){
-//
-//}
+function finalResult(win,loss){
+    console.log('Player wins:',win)
+    console.log('Computer wins:',loss)
+    console.log('Ties:',draw)
+    if (wins = loss){
+        console.log('Stalemate')
+    }else if (win > loss){
+        'Player defeats Computer'
+    }else {'Computer wins'}
+}
+
+function game(round) {
+    let result = finalResult(win,loss)
+    for (let i = 1;i <= 5; i++){
+        humanPlay();
+        singleRound(Pselect,Cselect)
+     } result 
+}
+ 

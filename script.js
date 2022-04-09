@@ -1,5 +1,4 @@
-var winners = [];
-const winners =playRound(playerSelection, computerSelection)
+
 var tie = 0
 const crps = ['ROCK','PAPER','SCISSORS'];
 var draw = "It's a draw"
@@ -34,7 +33,7 @@ function playRound(playerSelection, computerSelection){
         return rockBeatsScissors + youWin
     }  else if (playerSelection == 'PAPER' && computerSelection == 'ROCK'){
         return paperBeatsRock + youWin
-    } else if (playerSelction == 'PAPER' && computerSelection == 'PAPER'){
+    } else if (playerSelection == 'PAPER' && computerSelection == 'PAPER'){
         return draw
     } else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS'){
         return scissorsBeatsPaper + youLose
@@ -63,14 +62,15 @@ function keepScore(playerSelection, computerSelection){
         return computerScore+=1
     }console.log('CPU '+computerScore);console.log('User '+playerScore)
 } 
+
 function game(){
     for (let i = 0; i < 5; i++) {
-      console.log(playRound(playerSelection, computerSelection))
+        window.prompt('Rock, Paper, or Scissors','Rock').toUpperCase()
+        console.log(playRound(playerSelection, computerSelection))
         console.log('Player Score '+UserScore)
         console.log('cpu Score '+cpuScore) 
-      console.log('ROUND ' + i)
-     } 
-        
+        console.log('ROUND ' + i)
+     }         
 
 }
-console.group(game())
+console.log(game())

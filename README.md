@@ -4,6 +4,7 @@ I had to re-write it multiple times to get it right. I didn't want to delete my 
 I decided to start over i just made a new js document the rob.js is not my code at least 99% not mine it comes from a youtube page Coding with Rob. His github can be found at 
    https://github.com/codingWithRobz
 
+i did some tinkering with script.js and got it to work just not sure how
 everything below hear is from the odin project
 Start a new Git repo for your project.
 Create a blank HTML document with a script tag (Hint: it is best practice to link an external .js file). This game is going to be played completely from the console, so don’t worry about putting anything else in there.
