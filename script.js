@@ -1,4 +1,5 @@
-
+var cpuScore = 0
+var userScore = 0
 var tie = 0
 const crps = ['ROCK','PAPER','SCISSORS'];
 var draw = "It's a draw"
@@ -11,10 +12,15 @@ var draw = "It's a draw"
     var cpuScore = computerScore;
     var playerScore = 0
     var computerScore = 0
-function computerPlay() {
+        const computerSelection = computerPlay()
+        const playerSelection = playerPick()
+
+    function computerPlay() {
+    
+
     return crps[Math.floor(Math.random() * crps.length)]
 }
-var playerSelection = playerPick();
+
 function playerPick(){ 
    let choice = window.prompt('Rock, Paper, or Scissors','Rock').toUpperCase() ;
    while (choice !== 'ROCK' && choice !== 'PAPER' && choice !== 'SCISSORS'){
@@ -22,53 +28,44 @@ function playerPick(){
    }
        return choice
 }
-const computerSelection = computerPlay()
 function playRound(playerSelection, computerSelection){
     if (playerSelection == 'ROCK' && computerSelection == 'ROCK'){
+       tie++;
         return draw
         
     } else if (playerSelection == 'ROCK' && computerSelection == 'PAPER'){
+        cpuScore++;
         return  paperBeatsRock + youLose
     } else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS'){
+        userScore++;
         return rockBeatsScissors + youWin
     }  else if (playerSelection == 'PAPER' && computerSelection == 'ROCK'){
+        userScore++;
         return paperBeatsRock + youWin
     } else if (playerSelection == 'PAPER' && computerSelection == 'PAPER'){
+        tie++;
         return draw
     } else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS'){
+        cpuScore++;
         return scissorsBeatsPaper + youLose
     } else if (playerSelection == 'SCISSORS' && computerSelection =='ROCK' ){
+        cpuScore++;
         return rockBeatsScissors + youLose
     } else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER'){
+        userScore++;
         return scissorsBeatsPaper + youWin
     } else if (playerSelection = 'SCISSORS' & computerSelection == 'SCISSORS') {
+        tie++;
         return draw
     } else {
         return 'ERROR CODER ONE'
     } 
 }
-function keepScore(playerSelection, computerSelection){
-    var playerScore = 0
-    var computerScore = 0
-    if (playerSelection == computerSelection){
-        return tie += 1 
-    }else if((playerSelection == 'ROCK' && computerSelection == 'SCISSORS') 
-    || (playerSelection == 'PAPER' && computerSelection =='ROCK') 
-    || (playerSelection == 'SCISSORS' && computerSelection == 'ROCK')){
-        return playerScore+=1
-    } else if ((playerSelection == 'ROCK' && computerSelection == 'PAPER') 
-    || (playerSelection == 'PAPER' && computerSelection =='SCISSORS') 
-    || (playerSelection == 'SCISSORS' && computerSelection == 'ROCK')){
-        return computerScore+=1
-    }console.log('CPU '+computerScore);console.log('User '+playerScore)
-} 
-
 function game(){
-    for (let i = 0; i < 5; i++) {
-        window.prompt('Rock, Paper, or Scissors','Rock').toUpperCase()
+    for (let i = 1; i < 5; i++) {
         console.log(playRound(playerSelection, computerSelection))
-        console.log('Player Score '+UserScore)
-        console.log('cpu Score '+cpuScore) 
+        console.log('Player Score ',userScore)
+        console.log('cpu Score ',cpuScore) 
         console.log('ROUND ' + i)
      }         
 

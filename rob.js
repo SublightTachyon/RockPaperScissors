@@ -4,7 +4,7 @@ function game(){
     for(i = 0 ; i < 5 ; i++) {
         playRound(i);
     }logWins();
-}
+
 
 function playRound(round) {
     const playerSelection = playerChoice();
@@ -63,4 +63,5 @@ function logRound(playerChoice, computerChoice, winner, round) {
     console.log('Computer Chose ',computerChoice)
     console.log('Winner: ',winner)
     console.log('-----------------------')
+}
 }

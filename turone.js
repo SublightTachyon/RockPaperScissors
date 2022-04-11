@@ -1,80 +1,68 @@
-//declare some variables that will be used in the code.
-const shoot = ['rock','paper','scissors']
-const Cselect = comPlay()
-const Pselect = humanPlay()
-const winner = singleRound(Pselect,Cselect)
-var draw = 0
-var loss = 0
-var win = 0
-// function comPlay that returns rock, paper or scissors
-
-function comPlay(){
-    return shoot[Math.floor(Math.random()* shoot.length)]
-}
-
-//Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
-function humanPlay(){
-    let choice = window.prompt('rock, paper, or scissors','rock').toLowerCase();
-    while (
-        choice !=='rock' && choice !=='paper' && choice !=='scissors'
-    ){
-        choice = window.prompt('you have to type rock, paper, or scissors. Correct spelling, case insenstive.')
-    } return choice;
-}
-console.log('Player chose:',Pselect)
-console.log('Computer chose:',Cselect)
-// Write a function that plays a single round of Rock Paper Scissors. 
-//The function should take two parameters - the playerSelection and computerSelection - 
-//and then return a string that declares the winner of the round like so:
-// "You Lose! Paper beats Rock"
-function singleRound(Pselect,Cselect){
-    if (Pselect = Cselect){
-        console.log('Tie');
-        return draw
+let score = 0
+function computerPlay()  {
+    const choices = ['rock','paper','scissors'];  
+    const computerSelection =  choices[Math.floor(Math.random()*choices.length)]
+    return computerSelection
+ }
+ function playRound(playerSelection, computerSelection){
+    if (playerSelection === computerSelection) {
+        return 'tie'
     } else if (
-        (Pselect === 'rock' && Cselect === 'scissors')||
-        (Pselect === 'paper' && Cselect === 'rock')||
-        (Pselect === 'scissors' && Cselect === 'paper')
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === 'rock')
     ) {
-        console.log('You Win')
-        return win
-    } else if (
-        (Pselect === 'rock' && Cselect === 'paper') ||
-        (Pselect === 'paper' && Cselect ==='scissors') ||
-        (Pselect === 'scissors' && Cselect === 'rock')
-    ) {
-        console.log('You lose');
-        return loss
-    } else {console.log('ERROR FUNCTION SINGLE ROUND')}
-}
-//console.log(singleRound(Pselect,Cselect))
+        return 'win'
+    } else {
+        return 'loss'
+    }
+ } 
+ function trackScore(playerSelection, computerSelection){
+     if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper') ||
+        (playerSelection === 'paper' && computerSelection === 'rock')
+     ) {
+         score++;
+     } else if (playerSelection === computerSelection) {
+         score + 0;
+     } else {
+         score--;
+     }
+ }
 
-//Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
+ const playerSelection = 'rock'
+ const computerSelection = computerPlay()
+ function declareVictor(){
+    if (score == 0){
+        console.log('It was a draw')
+    } else if (score > 0){
+        console.log('!!! PLAYER WINS !!!')
+    } else {
+        console.log('!! COMPUTER WINS !!')
+    }
+ }
+ function game() {
+     for (let i = 1; i <= 5 ; i++){
 
-//function playRound(comPlay,humanPlay)
-
-//function humanPlay that take input from the player rock paper or scissors use prompt()
-
-
-//write a function called game() call playRound() inside of game() to play a five round game
-//and report a winner or loser at the end
-
-function finalResult(win,loss){
-    console.log('Player wins:',win)
-    console.log('Computer wins:',loss)
-    console.log('Ties:',draw)
-    if (wins = loss){
-        console.log('Stalemate')
-    }else if (win > loss){
-        'Player defeats Computer'
-    }else {'Computer wins'}
-}
-
-function game(round) {
-    let result = finalResult(win,loss)
-    for (let i = 1;i <= 5; i++){
-        humanPlay();
-        singleRound(Pselect,Cselect)
-     } result 
-}
- 
+        const computerSelection = computerPlay()
+        const playerSelection = window.prompt('Rock, Paper, or Scissors','Rock').toLowerCase()
+        playRound(playerSelection, computerSelection)
+        trackScore(playerSelection, computerSelection)
+        console.log('Player chose:',playerSelection)
+        console.log('Computer chose:',computerSelection)
+        console.log(playRound(playerSelection, computerSelection))
+        console.log('Player SCORE:',score)
+        console.log('round',i)
+        console.log('##################')           
+     } function declareVictor(){
+         if (score == 0){
+             console.log('It was a draw')
+         } else if (score > 0){
+             console.log('!!! PLAYER WINS !!!')
+         } else {
+             console.log('!! COMPUTER WINS !!')
+         }
+ }}
+ console.log(game())
+ console.log(declareVictor())
