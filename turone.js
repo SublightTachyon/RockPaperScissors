@@ -1,3 +1,10 @@
+const rockBtn = document.getElementById('rockBtn');
+const paperBtn = document.getElementById('paperBtn');
+const scissorsBtn = document.getElementById('scissorsBtn');
+
+//rockBtn.addEventListener("click", playRound('rock',computerSelection))
+
+
 let score = 0
 function computerPlay()  {
     const choices = ['rock','paper','scissors'];  
@@ -31,7 +38,7 @@ function computerPlay()  {
      }
  }
 
- const playerSelection = 'rock'
+ //const playerSelection = 'rock'
  const computerSelection = computerPlay()
  function declareVictor(){
     if (score == 0){
@@ -42,7 +49,7 @@ function computerPlay()  {
         console.log('!! COMPUTER WINS !!')
     }
  }
- function game() {
+ /*function game() {
      for (let i = 1; i <= 5 ; i++){
 
         const computerSelection = computerPlay()
@@ -65,4 +72,10 @@ function computerPlay()  {
          }
  }}
  console.log(game())
- console.log(declareVictor())
+ console.log(declareVictor()) */
+ function playRock(){
+    playerSelection ='rock'
+    console.log(playRound())
+     return playRound(playerSelection, computerSelection)
+ }
+ rockBtn.addEventListener("click", playRock)
